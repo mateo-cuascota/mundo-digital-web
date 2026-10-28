@@ -1,28 +1,70 @@
-# Mundo Digital — Web comercial (versión 1)
+# Mundo Digital 2.0 — sitio comercial
 
-Web estática HTML/CSS/JavaScript lista para abrir en el navegador o desplegar en hosting estático.
+Esta versión mejora el proyecto inicial de Mundo Digital y está lista para publicarse en el **mismo** proyecto de Cloudflare Pages, conectado a GitHub: `mateo-cuascota/mundo-digital-web`.
 
-## Abrir en tu computadora
-1. Extrae el ZIP.
-2. Abre `index.html` en Chrome (o desde VS Code con Live Server).
-3. Prueba los filtros, muestras, navegación y formulario.
+## Cambios de la versión 2.0
 
-## Antes de publicar
-- En `script.js`, modifica `CONFIG.whatsapp` con tu número comercial en formato internacional, **solo dígitos, sin + ni espacios**. Por ejemplo, un número de Ecuador empieza con 593. Si lo dejas vacío, el formulario ofrece copiar el pedido en lugar de mostrar un enlace roto.
-- Revisa precios (en `script.js`, arreglo `products`) y confirma que son los que deseas ofrecer.
-- Sustituye las demostraciones conceptuales por trabajos reales a medida que estén listos. No anuncies funciones no implementadas como si ya estuvieran disponibles.
-- Revisa el nombre comercial, la disponibilidad del dominio y textos legales (privacidad, condiciones, tiempos de entrega) antes de vender.
+- Encabezado con monograma **MD** corregido (sin letras desalineadas).
+- Diseño futurista responsive para pantallas grandes y teléfonos.
+- 6 líneas de servicios y catálogo filtrable con 8 productos.
+- 2 demostraciones interactivas reales: regalo romántico e invitación de muestra.
+- Código QR que abre la demostración romántica publicada.
+- Formulario que **prepara un texto** para copiar y enviar por DM. No transmite datos a un servidor ni procesa pagos.
+- Metadatos SEO, imagen para compartir, favicon, preguntas frecuentes y enlaces a TikTok.
 
-## Publicar sin servidor propio
-- Netlify Drop: abre https://app.netlify.com/drop y arrastra la carpeta completa (con index.html al nivel raíz).
-- Cloudflare Pages: entra en Workers & Pages > Create application > Pages > Direct Upload y sube el ZIP o carpeta.
-- Desde Cloudflare Pages > Custom domains, añade el dominio comprado y sigue las instrucciones DNS. Hasta entonces usarás un subdominio gratuito.
+## Archivos
 
-## Estructura
-- `index.html`: secciones y contenido general.
-- `styles.css`: aspecto responsivo y animaciones.
-- `script.js`: catálogo, filtros, muestras y formulario.
-- `assets/logo.png`: imagen de marca.
+```
+index.html
+styles.css
+script.js
+assets/
+  favicon.svg
+  logo.png
+  qr-demo-carta.png
+  social-preview.png
+demos/
+  carta-romantica.html
+  invitacion.html
+README.md
+```
 
-## Limitaciones de esta primera versión
-No incluye pagos automáticos, envío de formularios a servidor, subida de archivos, panel de clientes ni productos QR individuales generados automáticamente. Las vistas de catálogo son muestras conceptuales. Los datos escritos en el formulario se procesan en el navegador; no se almacenan en un backend.
+## Cómo probarlo en Visual Studio Code
+
+1. Extrae este ZIP.
+2. Abre **la carpeta que contiene `index.html`** en VS Code.
+3. En Git Bash o PowerShell ejecuta `npx serve .`.
+4. Abre la dirección local que te muestre la terminal, por ejemplo `http://localhost:3000`.
+5. Comprueba filtros, detalles, formulario y las dos demostraciones.
+
+## Cómo actualizar tu web pública sin cambiar el dominio
+
+1. Abre tu carpeta original del repositorio `mundo-digital-web` en VS Code.
+2. **Haz una copia de seguridad** de cualquier archivo que hayas modificado desde la versión anterior.
+3. Copia **el contenido** de este ZIP dentro de esa carpeta original y acepta reemplazar los archivos del proyecto (`index.html`, `styles.css`, `script.js`, etc.). Debes copiar también las carpetas `assets` y `demos`. **No borres la carpeta oculta `.git`.**
+4. En la terminal, desde la raíz del repositorio, ejecuta:
+
+```bash
+git status
+git add .
+git commit -m "Mundo Digital 2.0: catalogo y demos"
+git push origin main
+```
+
+5. En Cloudflare Pages consulta el nuevo despliegue. Si termina correctamente, se actualizará **https://mundodigitallab.pages.dev/** sin volver a configurar el dominio.
+
+## Personalización antes de vender
+
+- **WhatsApp:** en `script.js`, cambia `CONFIG.whatsapp = ''` por el número comercial internacional de solo dígitos, si deseas activar el botón de WhatsApp. Ejemplo de formato para Ecuador: `5939XXXXXXXX`. **No uses un teléfono de prueba**.
+- **Precios:** edítalos en el arreglo `products` de `script.js`. Son precios **referenciales** de lanzamiento, no compromisos comerciales.
+- **TikTok:** revisa enlaces a `@mundodigital.lab`.
+- **Regalos:** los ejemplos de `demos/` son demostraciones. Para clientes reales tendrás que acordar el tiempo de publicación, personalización, pagos y privacidad.
+- **QR:** `assets/qr-demo-carta.png` enlaza a `https://mundodigitallab.pages.dev/demos/carta-romantica.html`.
+- **Formulario:** sin número de WhatsApp, el cliente copia el mensaje y lo envía por TikTok. No hay backend, envío de correo ni almacenamiento de clientes.
+- **SEO:** cuando contrates dominio `.com`, cambia el `canonical` y los enlaces `og:` de `index.html`, y regenera el QR si quieres que use ese nuevo dominio.
+
+## Límites actuales
+
+No existe tienda de pago automatizada, panel de administración, sistema de reservas/RSVP, base de datos ni subida de archivos de clientes. Una tienda online es uno de los **servicios a cotizar**, no una función de la propia web comercial.
+
+Mundo Digital · 2026
